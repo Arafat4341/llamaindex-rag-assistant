@@ -67,7 +67,7 @@ additional_params = {
 }
 
 watsonx_llm = WatsonxLLM(
-    model_id="ibm/granite-3-8b-instruct",
+    model_id="meta-llama/llama-3-3-70b-instruct",
     url=os.getenv("IBM_URL"),
     project_id=os.getenv("IBM_PROJECT_ID"),
     apikey=os.getenv("IBM_API_KEY"),
