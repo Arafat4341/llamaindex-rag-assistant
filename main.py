@@ -75,5 +75,18 @@ watsonx_llm = WatsonxLLM(
     max_new_tokens=max_new_tokens,
     additional_params=additional_params,
 )
-response = watsonx_llm.complete("What is a Generative AI?")
-print(response)
+# response = watsonx_llm.complete("What is a Generative AI?")
+# print(response)
+
+# integrate this LLM into our query engine.
+query_engine = index.as_query_engine(
+  streaming=False, 
+  similarity_top_k=7, 
+  llm=watsonx_llm
+)
+
+response = query_engine.query("What is the lora paper about?")
+print(str(response))
+
+response = query_engine.query("List all the evaluation datasets that where used in the lora paper. Only consider the paper.")
+print(str(response))
